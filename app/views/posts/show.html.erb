@@ -15,6 +15,9 @@
     <%= render @post.comments %>
   </ol>
 
+
+  <% if can? :create, Comment %>
   <h3>Add a comment:</h3>
   <%= render 'comments/form' %>
+  <% end %>
 </div>
