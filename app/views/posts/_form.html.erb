@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.file_field :image %>
+    <%= f.input :image, type: :file %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
 
