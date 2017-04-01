@@ -1,0 +1,10 @@
+<%= form_for [@post, @post.comments.build] do |f| %>
+    <div>
+      Rate: <%= f.select :rate, options_for_select([1,2,3,4,5]) %>
+    </div>
+    <div>
+      Text: <%= f.text_area :body %>
+    </div>
+
+    <%= f.submit %>
+<% end %>

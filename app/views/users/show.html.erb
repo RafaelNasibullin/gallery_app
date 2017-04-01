@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @user.name %>'s profile <%= link_to 'Edit', edit_user_registration_path(current_user) if can? :edit, Post  %></h3>
+<% if current_user == @user %>
+<h3><%= @user.name %>'s profile <%= link_to 'Edit', edit_user_registration_path(current_user) if can? :edit, User  %></h3>
+<% else %>
+<h3><%= @user.name %>'s profile</h3>
+<% end %>
 <h4>My photos: <%= link_to 'Create new photo', new_post_path, class: 'btn btn-default' if can? :create, Post %></h4>
 
 <table class="table">
