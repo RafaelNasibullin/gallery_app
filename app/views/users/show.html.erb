@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @user.name %>'s profile <%= link_to 'Edit', '#', class: 'btn btn-default' %></h3>
+<h4>My photos: <%= link_to 'Create new photo', new_post_path, class: 'btn btn-default' %></h4>
+
+<table class="table">
+  <tr>
+    <th>Photo</th>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+  <% @user.posts.each do |post| %>
+  <tr>
+    <th><%= image_tag post.image.url(:thumb) if post.image? %></th>
+    <th><%= post.title%></th>
+    <th><%= link_to 'Remove', post_path(post), method: :delete, data: {confirm: "Are you sure?"},  class: 'btn' %></th>
+  </tr>
+  <% end %>
+</table>
+

@@ -2,12 +2,12 @@
 
 <div class="row">
   <% @posts.each do |post| %>
-  <div class="col-sm-6 col-md-2">
+  <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <%= image_tag post.image.url(:medium) if post.image? %>
+      <%= image_tag post.image.url(:big) if post.image? %>
       <div class="caption">
         <h5><%= link_to post.title, post_path(post) %></h5>
-        <p><%= post.user.name %></p>
+        <p>By: <%= link_to post.user.name, user_path(post.user) %></p>
       </div>
     </div>
   </div>
