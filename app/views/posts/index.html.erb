@@ -1,16 +1,17 @@
-<p id="notice"><%= notice %></p>
 
 <div class="row">
   <% @posts.each do |post| %>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <%= image_tag post.image.url(:big) if post.image? %>
-      <div class="caption">
-        <h5><%= link_to post.title, post_path(post) %></h5>
-        <p>By: <%= link_to post.user.name, user_path(post.user) %></p>
+    <%= link_to post_path(post) do %>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= image_tag post.image.url(:big) if post.image? %>
+        <div class="caption">
+          <h5><%= post.title %></h5>
+          <p>By: <%= link_to post.user.name, user_path(post.user) %></p>
+        </div>
       </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
 </div>
 

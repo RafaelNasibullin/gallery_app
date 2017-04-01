@@ -4,11 +4,8 @@
     <div class="thumbnail">
       <%= image_tag @post.image.url if @post.image? %>
       <div class="caption">
-        <h5><%= @post.title %></h5>
-        <p><%= @post.user.name %></p>
+        <h4><%= @post.title %></h4>
+        <p>Made by: <%= link_to @post.user.name, user_path(@post.user) %></p>
       </div>
     </div>
 </div>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

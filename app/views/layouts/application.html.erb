@@ -12,7 +12,7 @@
 	<div class="row">
 		<nav class="navbar navbar-fixed-top navbar-inverse">
 			<div class="container">
-				<div class="navbar-header">
+				<div class="navbar-header danger">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -20,6 +20,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<%= link_to 'Photo Gallery', root_path, class: 'navbar-brand' %>
+					<p class="navbar-text"><%= flash[:danger] %></p>
 				</div>
 
 				<div class="collapse navbar-collapse" id="navbar-collapse">

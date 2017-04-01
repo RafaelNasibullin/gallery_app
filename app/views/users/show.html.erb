@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @user.name %>'s profile <%= link_to 'Edit', edit_user_registration_path(current_user) %></h3>
-<h4>My photos: <%= link_to 'Create new photo', new_post_path, class: 'btn btn-default' %></h4>
+<h3><%= @user.name %>'s profile <%= link_to 'Edit', edit_user_registration_path(current_user) if can? :edit, Post  %></h3>
+<h4>My photos: <%= link_to 'Create new photo', new_post_path, class: 'btn btn-default' if can? :create, Post %></h4>
 
 <table class="table">
   <tr>
@@ -11,10 +11,13 @@
   </tr>
   <% @user.posts.each do |post| %>
   <tr>
-    <th><%= image_tag post.image.url(:thumb) if post.image? %></th>
+    <th>
+      <%= link_to post_path(post) do %>
+        <%= image_tag post.image.url(:thumb) if post.image? %>
+      <% end %>
+    </th>
     <th><%= post.title%></th>
-    <th><%= link_to 'Remove', post_path(post), method: :delete, data: {confirm: "Are you sure?"},  class: 'btn' %></th>
+    <th><%= link_to 'Remove', post_path(post), method: :delete, data: {confirm: "Are you sure?"},  class: 'btn' if can? :remove, Post  %></th>
   </tr>
   <% end %>
 </table>
-
