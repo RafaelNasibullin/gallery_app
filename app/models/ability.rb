@@ -10,6 +10,7 @@ class Ability
       elsif user.user?
         can [:create, :remove, :read], Post, user_id: user.id
         can [:edit,:update, :read], User, user_id: user.id
+        can [:create,:read], Comment, user_id: user.id
       else
         can :read, [Post, User]
       end
